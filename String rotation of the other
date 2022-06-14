@@ -1,4 +1,6 @@
 /*https://www.geeksforgeeks.org/a-program-to-check-if-strings-are-rotations-of-each-other/ */
+first approach
+time complexity O(n)
 
 public class HelloWorld{
     static void rotation(String str1, String str2){
@@ -16,3 +18,4 @@ public class HelloWorld{
         rotation(str1,str2);
      }
 }
+Better approach-
