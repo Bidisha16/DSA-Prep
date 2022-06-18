@@ -1,0 +1,67 @@
+https://practice.geeksforgeeks.org/problems/common-elements1132/1
+First Approach- Time Complexity: O(n1 + n2 + n3)
+Expected Auxiliary Space: O(n1 + n2 + n3)
+class Solution
+{
+    ArrayList<Integer> commonElements(int A[], int B[], int C[], int n1, int n2, int n3) 
+    {
+        // code here 
+        HashMap<Integer,Integer> map1=new HashMap<>();
+        HashMap<Integer,Integer> map2=new HashMap<>();
+        HashMap<Integer,Integer> map3=new HashMap<>();
+        ArrayList<Integer> ar=new ArrayList<>();
+        for(int i=0;i<n1;i++){
+            map1.putIfAbsent(A[i],0);
+            map1.put(A[i],map1.get(A[i])+1);
+        }
+        for(int i=0;i<n2;i++){
+            map2.putIfAbsent(B[i],0);
+            map2.put(B[i],map2.get(B[i])+1);
+        }
+        for(int i=0;i<n3;i++){
+            map3.putIfAbsent(C[i],0);
+            map3.put(C[i],map3.get(C[i])+1);
+        }
+        for(int i=0;i<n1;i++){
+            if(map1.containsKey(A[i]) && map2.containsKey(A[i]) && map3.containsKey(A[i])){
+                ar.add(A[i]);
+                map1.remove(A[i]);
+            }
+        }
+        return ar;
+    }
+    Better Approach-Time Complexity: O(n1 + n2 + n3)
+Expected Auxiliary Space: O(1)
+    class Solution
+{
+    ArrayList<Integer> commonElements(int A[], int B[], int C[], int n1, int n2, int n3) 
+    {
+        // code here 
+         int i =0,j=0,k=0;
+        ArrayList<Integer> res = new ArrayList<>();
+        while(i<n1 && j<n2 && k<n3)
+        {
+            if(A[i]==B[j] && B[j]==C[k])
+            {  
+                if(!res.contains(A[i]))
+                   res.add(A[i]);
+                i++;
+                j++;
+                k++;
+            }
+            else if(A[i]<B[j] || A[i]<C[k])
+            {
+                i++;
+            }
+            else if(B[j]<A[i] || B[j]<C[k])
+            {
+                j++;
+            }
+            else
+            {
+                k++;
+            }
+        }
+        return res;
+   }
+}
