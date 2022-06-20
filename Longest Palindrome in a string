@@ -1,0 +1,39 @@
+https://practice.geeksforgeeks.org/problems/longest-palindrome-in-a-string3411/1
+Time Complexity: O(|S|2).
+Auxiliary Space: O(1)
+class Solution{
+    static String longestPalin(String S){
+        // code here
+int start=0;int end=0;
+       int n=S.length();
+       for(int i=1;i<n;i++){
+           int l=i-1;int h=i;
+           while(l>=0 && h<n && S.charAt(l)==S.charAt(h)){
+               if(h-l+1>end-start+1){
+                   end=h;
+                   start=l;
+                   
+               }
+               l--;
+               h++;
+           }
+       }
+       for(int i=1;i<n-1;i++){
+           int l=i-1;int h=i+1;
+           while(l>=0 && h<n && S.charAt(l)==S.charAt(h)){
+               if(h-l+1>end-start+1){
+                   end=h;
+                   start=l;
+                   
+               }
+               l--;
+               h++;
+           }
+       }
+       String str="";
+       for(int i=start;i<=end;i++){
+           str+=S.charAt(i);
+       }
+       return str;
+    }
+}
