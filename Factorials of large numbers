@@ -1,0 +1,17 @@
+https://practice.geeksforgeeks.org/problems/factorials-of-large-numbers2508/1
+class Solution {
+    static ArrayList<Integer> factorial(int N){
+        //code here
+        java.math.BigInteger fac=new java.math.BigInteger("1");
+        ArrayList<Integer> ar=new ArrayList<>();
+        for(int i=1;i<=N;i++){
+            fac=fac.multiply(java.math.BigInteger.valueOf(i));
+        }
+        String str=fac.toString();
+        for(int i=0;i<str.length();i++){
+            int val=Integer.parseInt(String.valueOf(str.charAt(i)));
+            ar.add(val);
+        }
+        return ar;
+    }
+}
