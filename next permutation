@@ -1,0 +1,30 @@
+class Solution {
+    public void nextPermutation(int[] nums) {
+        int n=nums.length-1;
+        int swap_num; 
+        int swap_pt;
+        for(int i=n;i>0;i--){
+            if(nums[i]>nums[i+1]){
+                swap_num=nums[i+1];
+                swap_pt=i;
+                break;
+            }                                                                     )
+        }
+        for(int i=n;i>=0;i--){
+              if(nums[i]>swap_num){
+                swap(swap_num,nums[i]);
+                 break;
+            }                                                                )
+        }
+        int i=swap_pt;
+        int j=n;
+        while(i<j){
+            swap(nums[i],nums[j]);
+            i++;
+            j--;
+        }
+        return nums;
+        
+        
+    }
+}
