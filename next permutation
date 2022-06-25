@@ -1,29 +1,32 @@
 class Solution {
     public void nextPermutation(int[] nums) {
         int n=nums.length-1;
-        int swap_num; 
-        int swap_pt;
+        int swap_num=-1; 
+        int swap_pt=0;
         for(int i=n;i>0;i--){
-            if(nums[i]>nums[i+1]){
-                swap_num=nums[i+1];
+            if(nums[i]>nums[i-1]){
+                swap_num=nums[i-1];
                 swap_pt=i;
                 break;
-            }                                                                     )
+            }                                                                     
         }
-        for(int i=n;i>=0;i--){
-              if(nums[i]>swap_num){
-                swap(swap_num,nums[i]);
+        for(int i=n;i>0;i--){
+              if(nums[i]>swap_num && swap_num!=-1){
+                  int temp=nums[i];
+                  nums[i]=nums[swap_pt-1];
+                nums[swap_pt-1]=temp;
                  break;
-            }                                                                )
+            }                                                                
         }
         int i=swap_pt;
         int j=n;
         while(i<j){
-            swap(nums[i],nums[j]);
+            int temp=nums[i];
+            nums[i]=nums[j];
+            nums[j]=temp;
             i++;
             j--;
         }
-        return nums;
         
         
     }
