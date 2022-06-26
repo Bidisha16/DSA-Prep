@@ -1,0 +1,30 @@
+https://practice.geeksforgeeks.org/problems/permutations-of-a-given-string2041/1
+Time Complexity-n*n!
+Space Complexity-O(n)
+class Solution {
+    
+    static void permutation(String S, String soFar, HashSet<String> hs){
+       if(S.length()==0){
+            hs.add(soFar);
+        }
+        int n=S.length();
+        for(int i=0;i<n;i++){                  --n
+            char ch=S.charAt(i);
+            String leftPart=S.substring(0,i);
+            String rightPart=S.substring(i+1);
+            String restPart=leftPart+rightPart;
+            permutation(restPart, soFar+ch,hs); --n!
+        }
+    }
+    public List<String> find_permutation(String S) {
+        List<String> list=new ArrayList<>();
+        HashSet<String> hs=new HashSet<>();
+        String soFar="";
+         permutation(S,soFar,hs);
+         for(String i: hs){
+             list.add(i);
+         }
+         Collections.sort(list);
+         return list;
+    }
+}
