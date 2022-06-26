@@ -1,0 +1,22 @@
+class Solution {
+    
+    static List<String> permutation(String S, String soFar, List<String> list){
+       if(S.length()==0){
+            list.add(S);
+        }
+        int n=S.length();
+        for(int i=0;i<n;i++){
+            char ch=S.charAt(i);
+            String leftPart=S.substring(0,i);
+            String rightPart=S.substring(i+1);
+            String restPart=leftPart+rightPart;
+            permutation(restPart, soFar+ch,list);
+        }
+        return list;
+    }
+    public List<String> find_permutation(String S) {
+        List<String> list=new ArrayList<String>();
+        String soFar="";
+        return permutation(S,soFar,list);
+    }
+}
