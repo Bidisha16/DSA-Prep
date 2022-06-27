@@ -1,0 +1,48 @@
+class Solution {
+    // Finds decimal value of a given roman numeral
+    public int romanToDecimal(String str) {
+        // code here
+        int lastIndex=str.length()-1;
+        int count=0;
+        if(str.charAt(lastIndex)=='I'){
+                count+=1;
+            }if(str.charAt(lastIndex)=='V'){
+                count+=5;
+            }if(str.charAt(lastIndex)=='X'){
+                count+=10;
+            }if(str.charAt(lastIndex)=='L'){
+                count+=50;
+            }if(str.charAt(lastIndex)=='C'){
+                count+=100;
+            }if(str.charAt(lastIndex)=='D'){
+                count+=500;
+            }if(str.charAt(lastIndex)=='M'){
+                count+=1000;
+            }
+        for(int i=lastIndex-1;i>=0;i--){
+            if(str.charAt(i)=='I' && str.charAt(i+1)=='I'){
+                count+=1;
+            }else if(str.charAt(i)=='I' && ((str.charAt(i+1)=='V') || (str.charAt(i+1)=='X'))){
+                count-=1;
+            }else if(str.charAt(i)=='V' && (str.charAt(i+1)=='I')) {
+                count+=5;
+            }else if(str.charAt(i)=='X' && ((str.charAt(i+1)=='X') || (str.charAt(i+1)=='V') || (str.charAt(i+1)=='I'))){
+                count+=10;
+            }else if(str.charAt(i)=='X' && ((str.charAt(i+1)=='L') || (str.charAt(i+1)=='C'))){
+                count-=10;
+            }else if(str.charAt(i)=='L' && ((str.charAt(i+1)=='I') || (str.charAt(i+1)=='V') || (str.charAt(i+1)=='X'))){
+                count+=50;
+            }else if(str.charAt(i)=='C' && ((str.charAt(i+1)=='C') || (str.charAt(i+1)=='I') || (str.charAt(i+1)=='V')|| (str.charAt(i+1)=='X')|| (str.charAt(i+1)=='L'))){
+                count+=100;
+            }else if(str.charAt(i)=='C' && ((str.charAt(i+1)=='D') || (str.charAt(i+1)=='M'))){
+                count-=100;
+            }else if(str.charAt(i)=='D' && ((str.charAt(i+1)=='C') || (str.charAt(i+1)=='I') || (str.charAt(i+1)=='V')|| (str.charAt(i+1)=='X')|| (str.charAt(i+1)=='L'))){
+                count+=500;
+            }else if(str.charAt(i)=='M' && ((str.charAt(i+1)=='M') || (str.charAt(i+1)=='D') || (str.charAt(i+1)=='C') || (str.charAt(i+1)=='I') || (str.charAt(i+1)=='V')|| (str.charAt(i+1)=='X')|| (str.charAt(i+1)=='L'))){
+                count+=1000;
+            }
+            
+        }
+        return count;
+    }
+}
