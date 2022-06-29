@@ -1,0 +1,19 @@
+https://practice.geeksforgeeks.org/problems/array-subset-of-another-array2317/1
+Time Complexity: O(n)
+Expected Auxiliary Space: O(n)
+
+class Compute {
+    public String isSubset( long a1[], long a2[], long n, long m) {
+        HashSet<Long> hs=new HashSet<>();
+        for(long i:a1){
+            hs.add(i);
+        }
+        for(long i:a2){
+            if(!hs.contains(i)){
+                return "No";
+            }
+        }
+        return "Yes";
+        
+    }
+}
