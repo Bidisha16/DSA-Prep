@@ -1,0 +1,50 @@
+class Solution {
+   public ArrayList<String> genIp(String s) {
+        ArrayList<String> res=new ArrayList<>();
+        int n=s.length();
+        if(n<4 || n>12){
+            res.add("-1");
+            return res;
+        }
+        for(int i=0;i<n-3;i++){
+            for(int j=i+1;j<n-2;j++){
+                for(int k=j+1;k<n-1;k++){
+                    String ip=s.substring(0,i+1) + "." + 
+                    s.substring(i+1,j+1) + "." +s.substring(j+1,k+1) + "." 
+                    +s.substring(k+1,n);
+                    if(isValid(ip)){
+                        res.add(ip);
+                    }
+                }
+            }
+        }
+        return res;
+   }
+   public static boolean isValid(String ip){
+       int count=0;
+       ip += ".";
+       String part ="";
+       for(int i=0;i<ip.length();i++){
+
+           if(ip.charAt(i)!='.'){
+               part+=ip.charAt(i);
+           }
+           else{
+               count++;
+               if(part.length()>1 && part.charAt(0)=='0'){
+                  return false; 
+               }
+               int p=-1;
+            p=Integer.parseInt(part);
+               if(p<0 || p>255){
+                   return false;
+               }
+               part="";
+           }
+       }
+       if(count!=4){
+           return false;
+       }
+       return true;
+   }
+}
