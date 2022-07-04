@@ -1,0 +1,22 @@
+https://practice.geeksforgeeks.org/problems/find-the-median0527/1
+ Time Complexity: O(n * log(n))
+Space Complexity: O(1)
+ 
+class Solution
+{
+    public int find_median(int[] v)
+    {
+        // Code here
+        Arrays.sort(v);
+        int n=v.length;
+        int med=0;
+        if(n%2!=0){
+            int i=n/2;
+            med=v[i];
+        }else{
+            int i=n/2;
+            med=(v[i]+v[i-1])/2;
+        }
+        return med;
+    }
+}
