@@ -1,0 +1,27 @@
+https://practice.geeksforgeeks.org/problems/trapping-rain-water-1587115621/1
+Time Complexity: O(N)
+Auxiliary Space: O(N)
+class Solution{
+    
+    // Function to find the trapped water between the blocks.
+    static long trappingWater(int arr[], int n) { 
+        // Your code here
+        int left[]=new int[n];
+        int right[]=new int[n];
+        long count=0;
+        int max1=arr[0]; 
+        int max2=arr[n-1];
+        for(int i=0;i<n;i++){
+            max1=Math.max(max1,arr[i]);
+            max2=Math.max(max2,arr[n-i-1]);
+            left[i]=max1;
+            right[n-i-1]=max2;
+        }
+        for(int i=0;i<n;i++){
+            count+=Math.min(left[i],right[i])-arr[i];
+        }
+        return count;
+        
+        
+    } 
+}
