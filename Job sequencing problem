@@ -1,0 +1,52 @@
+https://practice.geeksforgeeks.org/problems/job-sequencing-problem-1587115620/1
+Greedy algorithm
+Arrays.sort(arr,(a,b)->(b.profit - a.profit)); - for sorting arrays in decending order
+Arrays.sort(arr,(a,b)->(a.profit - b.profit)); - for sorting arrays in ascending order
+returns negative value(-1), if and only if obj1 has to come before obj2.
+returns positive value(+1), if and only if obj1 has to come after obj2.
+returns zero(0), if and only if obj1 and obj2 are equal.
+
+class Solution
+{
+    //Function to find the maximum profit and the number of jobs done.
+    int[] JobScheduling(Job arr[], int n)
+    {
+        // Your code here
+        Arrays.sort(arr,(a,b)->(b.profit - a.profit));
+        int maxDeadline=Integer.MIN_VALUE;
+        for(int i=0;i<n;i++){
+            maxDeadline=Math.max(arr[i].deadline,maxDeadline);
+        }
+        int res[]=new int[maxDeadline+1];
+        for(int i=1;i<=maxDeadline;i++){
+            res[i]=-1;
+        }
+        int totalProfit=0;
+        int jobs=0;
+        for(int i=0;i<n;i++){
+            for(int j=arr[i].deadline;j>0;j--){
+                if(res[j]==-1){
+                    res[j]=5; //can give anything
+                    jobs++;
+                    totalProfit+=arr[i].profit;
+                    break;
+                }
+            }
+        }
+        int ans[]=new int[2];
+        ans[0]=jobs;
+        ans[1]=totalProfit;
+        return ans;
+    }
+}
+
+/*
+class Job {
+    int id, profit, deadline;
+    Job(int x, int y, int z){
+        this.id = x;
+        this.deadline = y;
+        this.profit = z; 
+    }
+}
+*/
