@@ -1,0 +1,27 @@
+https://practice.geeksforgeeks.org/problems/sort-a-stack/1
+
+/*Complete the function below*/
+class GfG{
+	public Stack<Integer> sort(Stack<Integer> s)
+	{
+		//add code here.
+		if(s.size()==1){
+		    return s;
+		}
+		int temp=s.pop();
+		sort(s);
+	    insertSort(temp,s);
+	    return s;
+	}
+	public static void insertSort(int value, Stack<Integer> s){
+	    if(s.size()==0 || value>s.peek()){
+	        s.push(value);
+	    }
+	    else{
+	        int temp=s.pop();
+	        insertSort(value, s);
+	        s.push(temp);
+	    }
+	    
+	} 
+}
