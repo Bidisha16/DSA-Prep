@@ -1,0 +1,26 @@
+https://practice.geeksforgeeks.org/problems/reverse-a-stack/1
+class Solution
+{ 
+    static void reverse(Stack<Integer> s)
+    {
+        // add your code here
+        if(s.size()==1){
+            return;
+        }
+        int element=s.pop();
+        reverse(s);
+        insertEnd(s,element);
+        return;
+        
+    }
+    static void insertEnd(Stack<Integer> s, int element){
+        if(s.size()==0){
+            s.push(element);
+            return;
+        }
+        int temp=s.pop();
+        insertEnd(s,element);
+        s.push(temp);
+        return;
+    }
+}
