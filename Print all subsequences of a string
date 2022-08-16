@@ -1,0 +1,20 @@
+https://www.geeksforgeeks.org/print-subsequences-string/
+
+import java.util.*;
+class GFG {
+	public static void main(String[] args) {
+	    String str="abc";
+	    String output="";
+		Subsequences(str,  output);
+	}
+	private static void Subsequences(String input, String output){
+	    if(input.length()==0){
+	        System.out.println(output);
+	        return;
+	    }
+	    String out2=output+input.charAt(0);
+	    input=input.substring(1);
+	    Subsequences(input,output);
+	    Subsequences(input,out2);
+	}
+}
