@@ -1,0 +1,26 @@
+https://practice.geeksforgeeks.org/problems/permutation-with-spaces3627/1
+class Solution{
+    
+    ArrayList<String> permutation(String S){
+        // Code Here
+        ArrayList<String> resList=new ArrayList<String>();
+        String input=S.substring(1);
+        String output=""+S.charAt(0);
+        solve(input, output, resList);
+        Collections.sort(resList);
+        return resList;
+    }
+    public static void solve(String input, String output, ArrayList<String> resList){
+        if(input.length()==0){
+            resList.add(output);
+            return;
+        }
+        String out1=output+input.charAt(0);
+        String out2=output+" "+input.charAt(0);
+        input=input.substring(1);
+        solve(input,out1,resList);
+        solve(input,out2,resList);
+        return;
+    }
+    
+}
