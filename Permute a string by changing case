@@ -1,0 +1,23 @@
+https://www.youtube.com/watch?v=J2Er5XceU_I&list=PL_z_8CaSLPWeT1ffjiImo0sYTcnLzo-wY&index=16
+O(n^n)-time complexity
+
+class GFG{
+    public static void main (String[] args) {
+        
+        String str="abc";
+        solve(str,"");
+    }
+    private static void solve(String input, String output){
+        if(input.length()==0){
+            System.out.println(output);
+            return;
+        }
+        String out1=output+input.charAt(0);
+        String s=""+input.charAt(0);
+        String out2=output+ s.toUpperCase();
+        input=input.substring(1);
+        solve(input,out1);
+        solve(input,out2);
+        return;
+    }
+}
