@@ -1,0 +1,30 @@
+https://practice.geeksforgeeks.org/problems/print-n-bit-binary-numbers-having-more-1s-than-0s0252/1
+
+class Solution {
+    ArrayList<String> NBitBinary(int N) {
+        // code here
+        ArrayList<String> resList=new ArrayList<String>();
+        int one=0;
+        int zero=0;
+        solve(one, zero, N, "", resList);
+        return resList;
+    }
+    public static void solve(int one, int zero, int N, String output, ArrayList<String> resList){
+        if((one+zero)==N){
+            resList.add(output);
+            return;
+        }
+        if(one>=zero && one<=N){
+            String out1=output+"1";
+            solve(one+1,zero,N,out1,resList);
+            
+        }
+        if(one>zero && zero<=N){
+            String out2=output+"0";
+            solve(one,zero+1,N,out2,resList);
+            
+        }
+        
+        
+    }
+}
