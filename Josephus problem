@@ -1,0 +1,28 @@
+https://www.geeksforgeeks.org/josephus-problem-set-1-a-on-solution/
+Time complexity- O(n^2)
+
+import java.io.*; 
+import java.util.*; 
+class GFG{
+    public static void main(String[] args) {
+        int n=40;
+        int k=7;
+        k=k-1;
+        int index=0;
+        ArrayList<Integer> al=new ArrayList<Integer>();
+        for(int i=0; i<n; i++) {
+            al.add(i+1);
+        }
+        solve(k,al,index); 
+    }
+    private static void solve(int k,ArrayList<Integer> al, int index){
+        if(al.size()==1){
+            System.out.println(al.get(0));
+            return;
+        }
+        index=(index+k)%(al.size());
+        al.remove(index);
+        solve(k,al,index);
+        return;
+    }
+}
