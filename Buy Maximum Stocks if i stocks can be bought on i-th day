@@ -1,0 +1,35 @@
+https://practice.geeksforgeeks.org/problems/buy-maximum-stocks-if-i-stocks-can-be-bought-on-i-th-day/1
+
+class Solution {
+    public static int buyMaximumProducts(int n, int k, int[] price) {
+        // code here
+        int count=0;
+        ArrayList<ArrayList<Integer>> al=new ArrayList<ArrayList<Integer>>();
+        for(int i=0;i<n;i++){
+            ArrayList<Integer> element=new ArrayList<Integer>();
+            element.add(price[i]);
+            element.add(i+1);
+            al.add(element);
+        }
+        Collections.sort(al, new Comparator<ArrayList<Integer>>(){
+            public int compare(ArrayList<Integer> first,ArrayList<Integer> second){
+                if(first.get(0)<=second.get(0)){
+                    return -1;
+                }
+                return 1;
+            }
+        });
+        for(int i=0;i<n;i++){
+            if((al.get(i).get(0)*al.get(i).get(1))<=k){
+                count=count+al.get(i).get(1);
+                k=k-(al.get(i).get(0)*al.get(i).get(1));
+            }
+            else{
+                count=count+k/al.get(i).get(0);
+                return count;
+            }
+        }
+        return count;
+    }
+}
+        
