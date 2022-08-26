@@ -1,0 +1,18 @@
+https://practice.geeksforgeeks.org/problems/check-if-it-is-possible-to-survive-on-island4922/1
+class Solution{
+    static int minimumDays(int S, int N, int M){
+        // code here
+        if(M>N){
+            return -1;
+        }else if(S>6 && 6*(N-M)<M){
+            return -1;
+        }
+        int total=S*M;
+        int count=0;
+        count=total/N;
+        if(total%N>0){
+            count++;
+        }
+        return count;
+    }
+}
