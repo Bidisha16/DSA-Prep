@@ -1,0 +1,43 @@
+https://practice.geeksforgeeks.org/problems/minimum-cost-to-cut-a-board-into-squares/1
+
+class Solution {
+    public static int minimumCostOfBreaking(int[] X, int[] Y,int M,int N) {
+        // code here
+         Arrays.sort(X);
+         //Collections.reverse(Arrays.asList(X));
+        Arrays.sort(Y);
+       // Collections.reverse(Arrays.asList(Y));
+        int vp=1;
+        int hp=1;
+        int lenx=X.length;
+        int leny=Y.length;
+        int i=lenx-1;
+        int j=leny-1;
+        int cost=0;
+        while(i>=0 && j>=0){
+            if(X[i]>=Y[j]){
+                cost=cost+X[i]*hp;
+                vp++;
+                i--;
+            }else{
+                cost=cost+Y[j]*vp;
+                hp++;
+                j--;
+
+            }
+        }
+        while(i>=0){
+            cost=cost+X[i]*hp;
+              //  vp++;
+                i--;
+        }
+         while(j>=0){
+                cost=cost+Y[j]*vp;
+             //   hp++;
+                j--;
+
+            }
+        return cost;
+    }
+}
+        
