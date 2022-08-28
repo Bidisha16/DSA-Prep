@@ -1,0 +1,27 @@
+https://practice.geeksforgeeks.org/problems/maximize-sum-after-k-negations1149/1
+
+Time Complexity: O(N*logN)
+Auxiliary Space: O(1)
+
+class Solution {
+
+    public static long maximizeSum(long a[], int n, int k)
+    {
+        // Your code goes here   
+        Arrays.sort(a);
+        long sum=0;
+        int i=0;
+        while(i<k && i<n && a[i]<0){
+             a[i]=-a[i];
+             i++;
+        }
+        Arrays.sort(a);
+        if((k-i)%2!=0){
+            a[0]=-a[0];
+        }
+        for(int j=0;j<n;j++){
+            sum+=a[j];
+        }
+        return sum;
+    }
+}
