@@ -1,0 +1,38 @@
+https://practice.geeksforgeeks.org/problems/sort-an-array-of-0s-1s-and-2s4231/1
+
+class Solution
+{
+    public static void sort012(int a[], int n)
+    {
+        // code here 
+        int countzero=0;
+        int countone=0;
+        int counttwo=0;
+        for(int i=0;i<n;i++){
+            if(a[i]==0){
+                countzero++;
+            }
+            else if(a[i]==1){
+                countone++;
+            }else{
+                counttwo++;
+            }
+        }
+        int j=0;
+        while(countzero>0){
+            a[j]=0;
+            j++;
+            countzero--;
+        }
+        while(countone>0){
+            a[j]=1;
+            j++;
+            countone--;
+        }
+        while(counttwo>0){
+            a[j]=2;
+            j++;
+            counttwo--;
+        }
+    }
+}
