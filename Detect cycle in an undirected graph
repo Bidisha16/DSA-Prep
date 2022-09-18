@@ -44,3 +44,34 @@ class Solution {
         return false;
     }
 }
+
+using dfs
+class Solution {
+    // Function to detect cycle in an undirected graph.
+    public boolean isCycle(int V, ArrayList<ArrayList<Integer>> adj) {
+        // Code here
+        boolean[] vis=new boolean[V];
+        for(int i=0;i<V;i++){
+            if(vis[i]==false){
+                 if(isCycleDfs(i, vis, -1, adj)){
+                     return true;
+                 }
+            }
+        }
+        return false;
+    }
+    public boolean isCycleDfs(int start, boolean[] vis, int parent, ArrayList<ArrayList<Integer>> adj){
+        vis[start]=true;
+        for(Integer itr:adj.get(start)){
+            if(vis[itr]==false){
+                if(isCycleDfs(itr, vis, start, adj)){
+                    return true;
+                }
+            } 
+            else if(itr!=parent){
+                return true;
+            }
+        }
+        return false;
+    }
+}
