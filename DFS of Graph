@@ -1,0 +1,21 @@
+https://practice.geeksforgeeks.org/problems/depth-first-traversal-for-a-graph/1
+
+class Solution {
+    // Function to return a list containing the DFS traversal of the graph.
+    public ArrayList<Integer> dfsOfGraph(int V, ArrayList<ArrayList<Integer>> adj) {
+        // Code here
+        ArrayList<Integer> dfs=new ArrayList<Integer>();
+        boolean[] vis=new boolean[V];
+        dfs(0, vis, dfs, adj);
+        return dfs;
+    }
+    public void dfs(int node, boolean[] vis, ArrayList<Integer> dfs, ArrayList<ArrayList<Integer>> adj){
+        dfs.add(node);
+        vis[node]=true;
+        for(Integer itr:adj.get(node)){
+            if(vis[itr]==false){
+                dfs(itr, vis, dfs, adj);
+            }
+        }
+    }
+}
