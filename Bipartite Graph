@@ -1,0 +1,38 @@
+https://practice.geeksforgeeks.org/problems/bipartite-graph/1
+
+using dfs
+class Solution
+{
+    public boolean isBipartite(int V, ArrayList<ArrayList<Integer>>adj)
+    {
+        // Code here
+        int[] colors=new int[V];
+        Arrays.fill(colors,-1);
+       // colors[0]=0;
+       for(int i=0;i<V;i++){
+            if(colors[i]==-1){
+                if(!bipartiteDfs(i, colors, adj)){
+                    return false;
+                }
+             }
+       }
+        return true;
+    }
+    public boolean bipartiteDfs(int node, int[] colors, ArrayList<ArrayList<Integer>>adj){
+        if(colors[node]==-1){
+            colors[node]=0;
+        }
+        for(Integer itr:adj.get(node)){
+            if(colors[itr]==-1){
+                colors[itr]=1-colors[node];
+                if(!bipartiteDfs(itr,colors, adj)){
+                    return false;
+                }
+            }else if(colors[itr]==colors[node]){
+                return false;
+            }
+        }
+            
+        return true;
+    }
+}
