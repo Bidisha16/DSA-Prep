@@ -1,0 +1,52 @@
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+import java.util.*;
+class HelloWorld {
+    public static void main(String[] args) {
+        ArrayList<ArrayList<Integer>> adj=new ArrayList<ArrayList<Integer> >();
+        int V=5;
+        for(int i=0;i<V;i++){
+            adj.add(new ArrayList<Integer>());
+        }
+        adj.get(0).add(1);
+        adj.get(0).add(2);
+        adj.get(1).add(0);
+        adj.get(1).add(2);
+        adj.get(1).add(4);
+        adj.get(2).add(0);
+        adj.get(2).add(1);
+        adj.get(2).add(3);
+        adj.get(3).add(2);
+        adj.get(3).add(4);
+        adj.get(4).add(3);
+        adj.get(4).add(1);
+        shortestPath(V, adj);
+    }
+    public static void shortestPath(int V, ArrayList<ArrayList<Integer>> adj){
+        int[] dis=new int[V];
+        Arrays.fill(dis, Integer.MAX_VALUE);
+        int[] vis=new int[V];
+        Arrays.fill(vis,-1);
+        dis[0]=0;
+        spBfs(dis,vis, adj);
+        for(int i=0;i<V;i++){
+            System.out.println(dis[i]);
+        }
+    }
+    public static int[] spBfs(int[] dis, int[] vis, ArrayList<ArrayList<Integer>> adj){
+        Queue<Integer> q=new LinkedList<>();
+        q.add(0);
+        while(!q.isEmpty()){
+            int node=q.poll();
+            vis[node]=1;
+            for(Integer itr:adj.get(node)){
+                if(vis[itr]==-1){
+                    q.add(itr);
+                }
+                dis[itr]=Math.min(dis[itr],dis[node]+1);
+            }
+            
+        }
+        return dis;
+    }
+}
