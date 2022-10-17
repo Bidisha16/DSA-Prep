@@ -1,5 +1,5 @@
 https://practice.geeksforgeeks.org/problems/minimum-spanning-tree/1
-
+PRIMS ALGO
 class Node implements Comparator<Node>{
     private int Vertex;
     private int weight;
